@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "my-store"
+version = "0.1.0"
+description = ""
+authors = ["Valera K <vk1337atliberty@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+
+[tool.poetry.group.main_package.dependencies]
+django = "^5.0.4"
+psycopg2-binary = "^2.9.9"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
