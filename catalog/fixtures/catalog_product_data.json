@@ -1,0 +1,80 @@
+[
+{
+    "model": "catalog.product",
+    "pk": 1,
+    "fields": {
+        "name": "Велосипед красный",
+        "description": "Описание - Велосипед красный",
+        "image": "catalog/product/bike_red.jpg",
+        "category": 1,
+        "price": 1000.0,
+        "created_at": "2024-04-07T08:59:15.460Z",
+        "updated_at": "2024-04-07T08:59:15.460Z"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 2,
+    "fields": {
+        "name": "Велосипед синий",
+        "description": "Описание  - Велосипед синий",
+        "image": "catalog/product/bike_blue.jpeg",
+        "category": 1,
+        "price": 1000.0,
+        "created_at": "2024-04-07T09:00:02.776Z",
+        "updated_at": "2024-04-07T09:00:02.776Z"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 3,
+    "fields": {
+        "name": "Автомобиль красный",
+        "description": "Описание - Автомобиль красный",
+        "image": "catalog/product/car_red.jpeg",
+        "category": 3,
+        "price": 100000.0,
+        "created_at": "2024-04-07T09:01:15.280Z",
+        "updated_at": "2024-04-07T09:01:15.280Z"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 4,
+    "fields": {
+        "name": "Автомобиль синий",
+        "description": "Описание - Автомобиль красный",
+        "image": "catalog/product/car_blue.jpeg",
+        "category": 3,
+        "price": 100000.0,
+        "created_at": "2024-04-07T09:02:10.869Z",
+        "updated_at": "2024-04-07T09:02:10.869Z"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 5,
+    "fields": {
+        "name": "Ролики красные",
+        "description": "Описание - Ролики красные",
+        "image": "catalog/product/rollers_red.jpg",
+        "category": 2,
+        "price": 100.0,
+        "created_at": "2024-04-07T09:02:35.009Z",
+        "updated_at": "2024-04-07T09:02:35.009Z"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 6,
+    "fields": {
+        "name": "Ролики синие",
+        "description": "Описание - Ролики синие",
+        "image": "catalog/product/rollers_blue.jpeg",
+        "category": 2,
+        "price": 110.0,
+        "created_at": "2024-04-07T09:02:54.104Z",
+        "updated_at": "2024-04-07T09:02:54.104Z"
+    }
+}
+]
