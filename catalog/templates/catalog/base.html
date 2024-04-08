@@ -1,0 +1,35 @@
+<!doctype html>
+
+{% load static %}
+
+<!--Head web-site-->
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ title }}</title>
+    <link href="{% static 'catalog/css/bootstrap.min.css' %}" rel="stylesheet">
+</head>
+<body>
+
+{% include './subtemplate/header.html' %}
+
+<!--Block with content-->
+<div class="container">
+    {% block content %}
+    
+    {% endblock %}
+</div>
+
+<!--Footer web-site-->
+<footer>
+    <div class="fixed-bottom pt-1 my-md-1 pt-md-1 border-top">
+        <div class="col-12 col-md">
+            ВелоМото... Мы на велосипедах с 1817 г.
+            <small class="d-block mb-3 text-muted">&copy; 1817-{% now 'Y' %}</small>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

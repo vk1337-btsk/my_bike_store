@@ -1,0 +1,22 @@
+{% load static %}
+
+<!--Header web-site-->
+<header>
+    <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
+        <a href="{% url 'catalog:home' %}" class="d-flex align-items-center link-body-emphasis text-decoration-none">
+            <img src="{% static '/catalog/img/logo.png' %}" height=150>
+            <span class="fs-4">ВелоМото</span>
+        </a>
+        <nav class="navbar navbar-light">
+            <div class="col-12 col-md">
+                <a class="p-2 btn btn-outline-primary" href="{% url 'catalog:catalog' %}">Каталог</a>
+            </div>
+            <div class="col-12 col-md">
+                <a class="p-2 btn btn-outline-primary" href="{% url 'catalog:contacts' %}">Контакты</a>
+            </div>
+            <div class="col-12 col-md">
+                <a class="p-2 btn btn-outline-primary" href="{% url 'catalog:about' %}">О нас</a>
+            </div>
+        </nav>
+    </div>
+</header>
