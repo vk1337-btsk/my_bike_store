@@ -1,26 +1,37 @@
 {% extends './base.html' %}
 
+
 {% block content %}
-
-
-<div class="row-cols-md-3 mb-3 text-center">
+{% load my_tags %}
+<div class="container">
+  <!-- Сетка карточек товаров -->
+  <div class="cards">
     {% for product in objects_list %}
-    
-    <div class="card" style="width:40%">
-        <div class="card-body">
-            <p class="card-text text-center">{{ product.name }}</p>
-        </div>
-        <a href="{% url 'catalog:product_info' pk=product.pk %}">
-            <img class="img-thumbnail" src="{{ product.image.url }}" style="width:100%"
-                 alt="Картинка товара">
+    <!-- Карточка товара -->
+    <!-- Карточка товара -->
+    <div class="card text-center">
+      <!-- Верхняя часть -->
+      <div class="card__top">
+        <!-- Изображение-ссылка товара -->
+        <a class="card__image" href="{% url 'catalog:product_info' pk=product.pk %}">
+          <img class="card-img-top" src="{{ product.image|media_url }}" alt="{{ product.name }}">
         </a>
-        <div class="card-body">
-            <p class="card-text">{{ product.description|truncatechars:100 }}</p>
+      </div>
+      <!-- Нижняя часть -->
+      <div class="card__bottom">
+        <!-- Цены на товар (с учетом скидки и без)-->
+        <div class="card__prices">
+          <div class="card__price card__price--discount">{{ product.price }}</div>
+          <!--      <div class="card__price card__price&#45;&#45;common">150 000</div>-->
         </div>
+        <!-- Ссылка-название товара -->
+        <a href="{% url 'catalog:product_info' pk=product.pk %}" class="card__title">
+          {{ product.description|truncatewords:20 }}
+        </a>
+      </div>
     </div>
-    
     {% endfor %}
-
+  </div>
 </div>
 
-{% endblock %}
+{% endblock content %}

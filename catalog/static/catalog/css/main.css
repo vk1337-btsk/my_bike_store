@@ -1,3 +1,18 @@
+/*Класс для сетки товаров*/
+.cards {
+  display: grid;
+  /* Автоматически заполняем на всю ширину grid-контейнера */
+  grid-template-columns: repeat(auto-fill, 225px); /*  определяет имена линий и размеры грид-колонок.*/
+  width: 100%; /* Устанавливает ширину элемента*/
+  max-width: 1000px; /* Ширина grid-контейнера */
+  justify-content: center; /*определяет, как браузер распределяет пространство между и вокруг элементов контента
+    вдоль главной оси flex контейнера, или вдоль строчной оси grid контейнера*/
+  justify-items: center; /* Размещаем карточку по центру */
+  column-gap: 30px; /* Отступ между колонками */
+  row-gap: 40px; /* Отступ между рядами */
+  margin: 0 auto;
+}
+
 .card {
   width: 225px;
   min-height: 350px;
@@ -25,9 +40,9 @@
   display: block;
   position: absolute;
   top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  left: 10px;
+  width: 90%;
+  height: 90%;
 }
 
 .card__image > img {
@@ -43,17 +58,17 @@
 }
 
 /* Размещаем скидку на товар относительно изображения */
-.card__label {
-  padding: 4px 8px;
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  background: #ff6633;
-  border-radius: 4px;
-  font-weight: 400;
-  font-size: 16px;
-  color: #fff;
-}
+/*.card__label {*/
+/*  padding: 4px 8px;*/
+/*  position: absolute;*/
+/*  bottom: 10px;*/
+/*  left: 10px;*/
+/*  background: #ff6633;*/
+/*  border-radius: 4px;*/
+/*  font-weight: 400;*/
+/*  font-size: 16px;*/
+/*  color: #fff;*/
+/*}*/
 
 .card__bottom {
   display: flex;
@@ -64,8 +79,8 @@
 
 .card__prices {
   display: flex;
-  margin-bottom: 10px;
-  flex: 0 0 50%; /* Размещаем цены равномерно в две колонки */
+  margin-bottom: 0px;
+  flex: 0 0 0%; /* Размещаем цены равномерно в две колонки */
 }
 
 .card__price::after {
@@ -82,12 +97,12 @@
   flex-wrap: wrap-reverse;
 }
 
-.card__price--discount::before {
-  content: "Со скидкой";
-  font-weight: 400;
-  font-size: 13px;
-  color: #bfbfbf;
-}
+/*.card__price--discount::before {*/
+/*    content: "Со скидкой";*/
+/*    font-weight: 400;*/
+/*    font-size: 13px;*/
+/*    color: #bfbfbf;*/
+/*}*/
 
 .card__price--common {
   font-weight: 400;
