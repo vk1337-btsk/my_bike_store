@@ -1,8 +1,8 @@
-{% extends './base.html' %}
-
+{% extends '.\main\base.html' %}
+{% load my_tags %}
 
 {% block content %}
-{% load my_tags %}
+
 <div class="container">
   <!-- Сетка карточек товаров -->
   <div class="cards">
@@ -27,6 +27,7 @@
         <!-- Ссылка-название товара -->
         <a href="{% url 'catalog:product_info' pk=product.pk %}" class="card__title">
           {{ product.description|truncatewords:20 }}
+          
         </a>
       </div>
     </div>
@@ -34,4 +35,9 @@
   </div>
 </div>
 
+{% include './subtemplate/pagination.html' %}
+
 {% endblock content %}
+
+
+

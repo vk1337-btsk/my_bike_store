@@ -10,8 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 import os
-from configparser import ConfigParser, NoSectionError
 from pathlib import Path
+from configparser import ConfigParser, NoSectionError
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'main',
     'catalog',
+    'journal',
 ]
 
 MIDDLEWARE = [
@@ -85,7 +87,6 @@ def get_data_from_config(name_section: str) -> dict[str, str]:
 
 
 params_db = get_data_from_config('database_my_store')
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -132,6 +133,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'main', 'static'),
     os.path.join(BASE_DIR, 'catalog', 'static'),
 ]
 

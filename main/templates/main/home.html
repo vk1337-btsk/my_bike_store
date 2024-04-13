@@ -1,0 +1,42 @@
+{% extends './base.html' %}
+{% load static %}
+
+{% block style %}
+  <link href="{% static 'main/css/articles.css' %}" rel="stylesheet">
+{% endblock style %}
+
+
+{% block content %}
+
+<div class="container">
+  <div class="d-flex flex-row-reverse bd-highlight">
+    <a href="{% url 'journal:create_article' %}"
+       class="btn btn-success">Создать</a>
+  </div>
+</div>
+
+<div class="container">
+{% for object in object_list %}
+  
+  
+  <div class="article">
+    <div>
+      <small class="text-muted">{{ object.created_at }}</small>
+      <small class="text-muted">Просмотров: {{ object.count_views }}</small>
+    </div>
+    {% if object.image %}
+    <img src="{{ object.image.url }}" class="card-img-top" style="width:50%; margin-left:auto; margin-right:auto"
+         alt="card-img-top">
+    {% endif %}
+    <div class="card-body">
+      <h5 class="card-title"><a href="{% url 'journal:article_detail' object.slug %}">{{ object.title }}</a></h5>
+      <p class="card-text">{{ object.text|truncatewords:100 }}</p>
+    
+    </div>
+  </div>
+{% endfor %}
+</div>
+
+{% endblock content %}
+
+
