@@ -13,20 +13,18 @@
   {% block style %}
   {% endblock style %}
 </head>
+
 <body>
-
-<header>
-  {% include '.\main\subtemplates\header.html' %}
-</header>
-
-<!--Block with content-->
-<div class="container">
+  <header>
+    {% include '.\main\subtemplates\header.html' %}
+  </header>
+  
+  <!--Block with content-->
   {% block content %}
   {% endblock %}
-</div>
-
-<footer>
-  {% include '.\main\subtemplates\footer.html' %}
-</footer>
+  
+  <footer>
+    {% include '.\main\subtemplates\footer.html' %}
+  </footer>
 </body>
 </html>

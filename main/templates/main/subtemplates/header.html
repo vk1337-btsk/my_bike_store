@@ -1,27 +1,30 @@
 {% load static %}
 
 <!--Header web-site-->
-
-<div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
-  <a href="{% url 'main:home' %}" class="d-flex align-items-center link-body-emphasis text-decoration-none">
-    <img src="{% static '/main/img/logo.png' %}" height=150>
-    <span class="fs-4">ВелоЦентр</span>
-  </a>
-  <nav class="navbar navbar-light">
-    <div class="col-12 col-md">
-      <a class="p-2 btn btn-outline-primary" href="{% url 'catalog:catalog' %}">Каталог</a>
-    </div>
-    <div class="col-12 col-md">
-      <a class="p-2 btn btn-outline-primary" href="{% url 'main:contacts' %}">Контакты</a>
-    </div>
-    <div class="col-12 col-md">
-      <a class="p-2 btn btn-outline-primary" href="{% url 'main:about' %}">О нас</a>
-    </div>
-  </nav>
-  <span>
-        <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-right">
+<div class="container">
+  <div class="d-flex flex-md-row align-items-center pb-3 mb-4 border-bottom">
+    
+    <a href="{% url 'main:home' %}" class="d-flex align-items-center link-body-emphasis text-decoration-none">
+      <img src="{% static '/main/img/logo.png' %}" height=150>
+      <span>
+        <div class="text-left">
           <h1 class="display-4">ВелоЦентр</h1>
           <p class="lead">ВелоЦентр - лучшие велосипеды твоего города!</p>
         </div>
       </span>
+    </a>
+    
+    <nav class="navbar navbar-light">
+      <div class="col-12 col-md">
+        <a class="p-2 btn btn-outline-primary" href="{% url 'catalog:catalog' %}">Каталог</a>
+      </div>
+      <div class="col-12 col-md">
+        <a class="p-2 btn btn-outline-primary" href="{% url 'main:contacts' %}">Контакты</a>
+      </div>
+      <div class="col-12 col-md">
+        <a class="p-2 btn btn-outline-primary" href="{% url 'main:about' %}">О нас</a>
+      </div>
+    </nav>
+  
+  </div>
 </div>

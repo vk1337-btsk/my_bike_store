@@ -1,5 +1,5 @@
 /*Класс для сетки товаров*/
-.cards {
+.cards-product {
   display: grid;
   /* Автоматически заполняем на всю ширину grid-контейнера */
   grid-template-columns: repeat(auto-fill, 225px); /*  определяет имена линий и размеры грид-колонок.*/
@@ -13,7 +13,7 @@
   margin: 0 auto;
 }
 
-.card {
+.card-product {
   width: 225px;
   min-height: 350px;
   box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.1);
@@ -24,8 +24,11 @@
   position: relative;
 }
 
+
+
+
 /* При наведении на карточку - меняем цвет тени */
-.card:hover {
+.card-product:hover {
   box-shadow: 4px 8px 16px rgba(255, 102, 51, 0.2);
 }
 

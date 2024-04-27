@@ -6,7 +6,8 @@ class Articles(models.Model):
     title = models.CharField(max_length=150, verbose_name='Название статьи')
     slug = models.CharField(max_length=150, null=True, blank=True, verbose_name='slug')
     text = models.TextField(verbose_name='Текст статьи')
-    image = models.ImageField(upload_to='catalog/articles/', null=True, blank=True, verbose_name="Превью статьи")
+    image = models.ImageField(upload_to='journal/articles/', null=True, blank=True, verbose_name="Превью статьи",
+                              default='journal/articles/default.jpg')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
     flag_publication = models.BooleanField(verbose_name='Статус публикации')
     count_views = models.IntegerField(default=0, verbose_name='Количество просмотров')

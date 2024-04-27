@@ -1,6 +1,7 @@
-from django.urls import reverse_lazy, reverse
+from django.urls import reverse
 from django.views.generic import DetailView, UpdateView, CreateView, DeleteView
 
+from journal.forms import ArticleForm
 from journal.models import Articles
 
 
@@ -17,7 +18,7 @@ class ArticleDetailView(DetailView):
 
 class ArticleCreateView(CreateView):
     model = Articles
-    fields = ('title', 'text', 'image', 'flag_publication', )
+    form_class = ArticleForm
 
     def get_success_url(self):
         return reverse('journal:article_detail', kwargs={'slug': self.object.slug})
@@ -25,7 +26,7 @@ class ArticleCreateView(CreateView):
 
 class ArticleUpdateView(UpdateView):
     model = Articles
-    fields = ('title', 'text', 'image', 'flag_publication', )
+    form_class = ArticleForm
 
     def get_success_url(self):
         return reverse('journal:article_detail', kwargs={'slug': self.object.slug})
