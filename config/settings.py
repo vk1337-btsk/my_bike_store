@@ -11,14 +11,14 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 import os
 from pathlib import Path
-from configparser import ConfigParser, NoSectionError
-
+from utils import get_data_from_config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
+
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-xvf^d69zl)l#-%b6!joa*l@yxt$qj2h0djyheny5b6ug90ob4j'
@@ -37,9 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'main',
-    'catalog',
-    'journal',
+    'apps.main',
+    'apps.catalog',
+    'apps.journal',
 ]
 
 MIDDLEWARE = [
@@ -72,21 +72,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-def get_data_from_config(name_section: str) -> dict[str, str]:
-    """This method gets a dictionary with data from the config.ini file"""
-    filename = os.path.join(BASE_DIR, "config.ini")
-    parser = ConfigParser()
-    try:
-        parser.read(filename)
-        return dict(parser.items(name_section))
-    except NoSectionError as err_:
-        raise Exception(f"Section '{name_section}' not found in '{filename}'") from err_
-
-
-params_db = get_data_from_config('database_my_store')
+params_db = get_data_from_config('database_my_store', BASE_DIR)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -133,8 +121,8 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'main', 'static'),
-    os.path.join(BASE_DIR, 'catalog', 'static'),
+    os.path.join(BASE_DIR, 'apps', 'main', 'static'),
+    os.path.join(BASE_DIR, 'apps', 'catalog', 'static'),
 ]
 
 # Default primary key field type
@@ -144,4 +132,3 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-

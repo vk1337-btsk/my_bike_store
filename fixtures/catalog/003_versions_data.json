@@ -1,0 +1,29 @@
+[
+  {
+    "model": "catalog.version",
+    "fields": {
+      "product": 1,
+      "number_version": 1,
+      "title_version": "Версия 1",
+      "is_active": true
+    }
+  },
+  {
+    "model": "catalog.version",
+    "fields": {
+      "product": 2,
+      "number_version": 23,
+      "title_version": "Версия 23",
+      "is_active": true
+    }
+  },
+  {
+    "model": "catalog.version",
+    "fields": {
+      "product": 2,
+      "number_version": 1,
+      "title_version": "Версия 1",
+      "is_active": false
+    }
+  }
+]

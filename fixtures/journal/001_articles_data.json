@@ -1,0 +1,38 @@
+[
+  {
+    "model": "journal.articles",
+    "fields": {
+      "title": "О важности велосипедов",
+      "slug": "o-vazhnosti-velosipedov",
+      "text": "Текст статьи \"О важности велосипедов\"",
+      "image": "journal/articles/bike_01_FxZhCIt.jpg",
+      "created_at": "2024-04-26T15:03:32.256Z",
+      "flag_publication": true,
+      "count_views": 2
+    }
+  },
+  {
+    "model": "journal.articles",
+    "fields": {
+      "title": "О крутости велосипедов",
+      "slug": "o-krutosti-velosipedov",
+      "text": "Текст статьи \"О крутости велосипедов\"",
+      "image": "journal/articles/bike_02_7cNMTWc.jpg",
+      "created_at": "2024-04-26T15:04:05.560Z",
+      "flag_publication": true,
+      "count_views": 1
+    }
+  },
+  {
+    "model": "journal.articles",
+    "fields": {
+      "title": "Новая статья о велосипедах",
+      "slug": "novaya-statya-o-velosipedah",
+      "text": "Текст статьи \"Новая статья о велосипедах\"",
+      "image": "journal/articles/default.jpg",
+      "created_at": "2024-04-26T15:04:31.376Z",
+      "flag_publication": true,
+      "count_views": 1
+    }
+  }
+]

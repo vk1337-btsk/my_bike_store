@@ -1,0 +1,7 @@
+; Configuration for database my_store
+[database_my_store]
+dbname = db_name
+host = localhost
+user = postgres
+password = password
+port = 5432

@@ -1,0 +1,30 @@
+<!doctype html>
+
+{% load static %}
+
+<!--Head web-site-->
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ title }}</title>
+    <link href="{% static 'main/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'main/css/main.css' %}" rel="stylesheet">
+    {% block style %}
+    {% endblock style %}
+</head>
+
+<body>
+<header>
+    {% include 'main/subtemplates/header.html' %}
+</header>
+
+<!--Block with content-->
+{% block content %}
+{% endblock %}
+
+<footer>
+    {% include 'main/subtemplates/footer.html' %}
+</footer>
+</body>
+</html>

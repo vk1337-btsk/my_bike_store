@@ -1,6 +1,6 @@
 # PyCharm and Python
-.venv
-.idea
+.venv/
+.idea/
 */__pycache__/
 __pycache__/
 
@@ -9,3 +9,6 @@ poetry.lock
 
 # Private data
 config.ini
+
+# Development
+setup.cfg
