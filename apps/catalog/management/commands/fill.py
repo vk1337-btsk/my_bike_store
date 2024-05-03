@@ -12,7 +12,7 @@ class Command(BaseCommand):
     @staticmethod
     def read_fixtures_json(dir_name: str, filename: str) -> list:
         """Retrieving data from a fixture file in the format"""
-        with open(rf'{BASE_DIR}\fixtures\{dir_name}\{filename}.json', encoding='UTF-8') as file:
+        with open(f'{BASE_DIR}/fixtures/{dir_name}/{filename}.json', encoding='UTF-8') as file:
             data = json.load(file)
         return data
 
