@@ -21,6 +21,23 @@ class VersionForm(StyleFormMixin, forms.ModelForm):
 
 
 class ProductForm(StyleFormMixin, forms.ModelForm):
+    forbidden_words = ['казино', 'криптовалюта', 'крипта', 'биржа', 'дешево', 'бесплатно', 'обман', 'полиция',
+                       'радар']
+
     class Meta:
         model = Product
         fields = '__all__'
+
+    def clean_name(self):
+        clean_name = self.cleaned_data['name']
+        for word in self.forbidden_words:
+            if word in clean_name.lower():
+                raise forms.ValidationError(f'Название продукта не может содержать слово "{word}"')
+        return clean_name
+
+    def clean_description(self):
+        clean_description = self.cleaned_data['description']
+        for word in self.forbidden_words:
+            if word in clean_description.lower():
+                raise forms.ValidationError(f'Описание продукта не может содержать слово "{word}"')
+        return clean_description
