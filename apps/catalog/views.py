@@ -1,22 +1,20 @@
 from django.urls import reverse_lazy
-from django.views.generic import ListView, DetailView, UpdateView, CreateView
+from django.views.generic import ListView, DetailView, UpdateView, CreateView, DeleteView
 from django.forms import inlineformset_factory
 
 from apps.catalog.forms import VersionForm, ProductForm
 from apps.catalog.models import Product, Version, Category
 
 
-class CatalogListView(ListView):
-    template_name = 'catalog/catalog.html'
+class ProductListView(ListView):
     model = Product
-    context_object_name = 'objects_list'
     paginate_by = 4
-    extra_context = {'title': 'Каталог'}
+    extra_context = {'title': 'Товары'}
 
 
 class ProductDetailView(DetailView):
-    template_name = 'catalog/product.html'
     model = Product
+    extra_context = {"title": "Просмотр товара"}
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -32,9 +30,10 @@ class ProductDetailView(DetailView):
 class ProductUpdateView(UpdateView):
     model = Product
     form_class = ProductForm
+    extra_context = {"title": "Редактирование товара"}
 
     def get_success_url(self):
-        return reverse_lazy('catalog:product_detail', kwargs={'pk': 8})
+        return reverse_lazy('catalog:product_detail', args=[self.kwargs.get('pk')])
 
     def get_context_data(self, **kwargs):
         context_data = super().get_context_data(**kwargs)
@@ -59,6 +58,7 @@ class ProductUpdateView(UpdateView):
 class ProductCreateView(CreateView):
     model = Product
     form_class = ProductForm
+    extra_context = {"title": "Создание товара"}
     success_url = reverse_lazy('catalog:catalog')
 
     def get_context_data(self, **kwargs):
@@ -81,3 +81,9 @@ class ProductCreateView(CreateView):
             return super().form_valid(form)
         else:
             return self.render_to_response(self.get_context_data(form=form, formset=formset))
+
+
+class ProductDeleteView(DeleteView):
+    model = Product
+    extra_context = {"title": "Удаление товара"}
+    success_url = reverse_lazy('catalog:catalog')

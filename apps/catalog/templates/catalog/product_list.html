@@ -5,12 +5,12 @@
 
 <div class="container">
     <div>
-        <a href="{% url 'catalog:create_product' %}"
+        <a href="{% url 'catalog:product_create' %}"
            class="btn btn-sm btn-outline-secondary">Создать</a>
     </div>
     <!-- Сетка карточек товаров -->
     <div class="cards-product">
-        {% for product in objects_list %}
+        {% for product in page_obj %}
         <!-- Карточка товара -->
         <!-- Карточка товара -->
         <div class="card-product text-center">
@@ -40,7 +40,7 @@
     </div>
 </div>
 
-<div class="container">
+<div class="container mt-3">
     {% include 'catalog/subtemplate/pagination.html' %}
 </div>
 

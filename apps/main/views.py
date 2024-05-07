@@ -1,15 +1,16 @@
-from django.views.generic import TemplateView, ListView
+from django.views.generic import TemplateView
 
 from apps.journal.models import Articles
 
 
-class HomeArticlesListView(ListView):
-    template_name = 'main/home.html'
-    model = Articles
+class HomeArticlesListView(TemplateView):
+    template_name = 'journal/articles_list.html'
     extra_context = {'title': 'Главная'}
 
-    def get_queryset(self):
-        return Articles.objects.filter(flag_publication=True).order_by('-count_views')
+    def get_context_data(self, **kwargs):
+        context_data = super().get_context_data(**kwargs)
+        context_data['object_list'] = Articles.objects.filter(flag_publication=True).order_by('-count_views')
+        return context_data
 
 
 class ContactsView(TemplateView):

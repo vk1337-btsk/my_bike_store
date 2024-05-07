@@ -3,11 +3,12 @@ from django.conf.urls.static import static
 from django.urls import path
 
 from apps.journal.apps import JournalConfig
-from apps.journal.views import ArticleDetailView, ArticleUpdateView, ArticleCreateView, ArticleDeleteView
+from apps.journal.views import ArticleListView, ArticleDetailView, ArticleUpdateView, ArticleCreateView, ArticleDeleteView
 
 app_name = JournalConfig.name
 
 urlpatterns = [
+    path('articles/', ArticleListView.as_view(), name='articles'),
     path('articles/<slug:slug>', ArticleDetailView.as_view(), name='article_detail'),
     path('articles/create/', ArticleCreateView.as_view(), name='create_article'),
     path('articles/delete/<slug:slug>', ArticleDeleteView.as_view(), name='delete_article'),

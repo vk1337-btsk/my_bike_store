@@ -1,8 +1,13 @@
-from django.urls import reverse
-from django.views.generic import DetailView, UpdateView, CreateView, DeleteView
+from django.urls import reverse, reverse_lazy
+from django.views.generic import ListView, DetailView, UpdateView, CreateView, DeleteView
 
 from apps.journal.forms import ArticleForm
 from apps.journal.models import Articles
+
+
+class ArticleListView(ListView):
+    model = Articles
+    extra_context = {'title': 'Статьи'}
 
 
 class ArticleDetailView(DetailView):
@@ -19,6 +24,7 @@ class ArticleDetailView(DetailView):
 class ArticleCreateView(CreateView):
     model = Articles
     form_class = ArticleForm
+    extra_context = {"title": "Создание статьи"}
 
     def get_success_url(self):
         return reverse('journal:article_detail', kwargs={'slug': self.object.slug})
@@ -27,6 +33,7 @@ class ArticleCreateView(CreateView):
 class ArticleUpdateView(UpdateView):
     model = Articles
     form_class = ArticleForm
+    extra_context = {"title": "Редактирование статьи"}
 
     def get_success_url(self):
         return reverse('journal:article_detail', kwargs={'slug': self.object.slug})
@@ -34,7 +41,5 @@ class ArticleUpdateView(UpdateView):
 
 class ArticleDeleteView(DeleteView):
     model = Articles
-    fields = ('title', 'text', 'image', 'flag_publication',)
-
-    def get_success_url(self):
-        return reverse('main:home')
+    extra_context = {"title": "Удаление статьи"}
+    success_url = reverse_lazy('main:home')
