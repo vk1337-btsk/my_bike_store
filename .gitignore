@@ -9,6 +9,7 @@ poetry.lock
 
 # Private data
 config.ini
+.env
 
 # Development
 setup.cfg
