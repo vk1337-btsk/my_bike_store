@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, UpdateView, CreateView, DeleteView
 from django.forms import inlineformset_factory
@@ -12,7 +13,8 @@ class ProductListView(ListView):
     extra_context = {'title': 'Товары'}
 
 
-class ProductDetailView(DetailView):
+class ProductDetailView(LoginRequiredMixin, DetailView):
+    login_url = reverse_lazy('users:login')
     model = Product
     extra_context = {"title": "Просмотр товара"}
 
@@ -27,7 +29,8 @@ class ProductDetailView(DetailView):
         return context
 
 
-class ProductUpdateView(UpdateView):
+class ProductUpdateView(LoginRequiredMixin, UpdateView):
+    login_url = reverse_lazy('users:login')
     model = Product
     form_class = ProductForm
     extra_context = {"title": "Редактирование товара"}
@@ -55,7 +58,8 @@ class ProductUpdateView(UpdateView):
         return super().form_valid(form)
 
 
-class ProductCreateView(CreateView):
+class ProductCreateView(LoginRequiredMixin, CreateView):
+    login_url = reverse_lazy('users:login')
     model = Product
     form_class = ProductForm
     extra_context = {"title": "Создание товара"}
@@ -76,6 +80,7 @@ class ProductCreateView(CreateView):
         formset = context_data['formset']
         if form.is_valid() and formset.is_valid():
             self.object = form.save()
+            self.object.owner = self.request.user
             formset.instance = self.object
             formset.save()
             return super().form_valid(form)
@@ -83,7 +88,8 @@ class ProductCreateView(CreateView):
             return self.render_to_response(self.get_context_data(form=form, formset=formset))
 
 
-class ProductDeleteView(DeleteView):
+class ProductDeleteView(LoginRequiredMixin, DeleteView):
+    login_url = reverse_lazy('users:login')
     model = Product
     extra_context = {"title": "Удаление товара"}
     success_url = reverse_lazy('catalog:catalog')

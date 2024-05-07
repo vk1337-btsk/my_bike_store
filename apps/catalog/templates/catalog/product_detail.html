@@ -31,7 +31,7 @@
                     {% else %}
                     <p>Активная версия: отсутствует</p>
                     {% endif %}
-
+                    <p>Добавил: {{ object.owner|default:'неизвестно' }}</p>
                 </div>
                 <div class="col">
                     <p>{{object.description}}</p>

@@ -17,6 +17,7 @@
   <div>
     <small class="text-muted">{{ object.created_at }}</small>
     <small class="text-muted">Просмотров: {{ object.count_views }}</small>
+    <small class="text-muted">Автор: {{ object.owner|default:'неизвестен' }}</small>
   </div>
   <div class="row no-gutters">
     
