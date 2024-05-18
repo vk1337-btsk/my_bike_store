@@ -4,10 +4,12 @@
 {% block content %}
 
 <div class="container">
+    {% if user.is_autheniceated %}
     <div>
         <a href="{% url 'catalog:product_create' %}"
            class="btn btn-sm btn-outline-secondary">Создать</a>
     </div>
+    {% endif %}
     <!-- Сетка карточек товаров -->
     <div class="cards-product">
         {% for product in page_obj %}

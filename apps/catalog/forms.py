@@ -17,7 +17,7 @@ class StyleFormMixin:
 class VersionForm(StyleFormMixin, forms.ModelForm):
     class Meta:
         model = Version
-        exclude = ('product', )
+        exclude = ('product',)
 
 
 class ProductForm(StyleFormMixin, forms.ModelForm):
@@ -41,3 +41,9 @@ class ProductForm(StyleFormMixin, forms.ModelForm):
             if word in clean_description.lower():
                 raise forms.ValidationError(f'Описание продукта не может содержать слово "{word}"')
         return clean_description
+
+
+class ModeratorProductForm(StyleFormMixin, forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = ('description', 'is_published', 'category')

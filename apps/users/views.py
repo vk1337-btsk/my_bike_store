@@ -42,7 +42,7 @@ class UserRegisterView(CreateView):
                 recipient_list=[user.email]
             )
         except Exception:
-            print(f"Ошибка при отправке письма верификации")
+            print("Ошибка при отправке письма верификации")
         return super().form_valid(form)
 
 

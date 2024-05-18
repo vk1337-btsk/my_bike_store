@@ -9,9 +9,11 @@
 {% block content %}
 
 <div class="container">
+    {% if perms.journal.add_articles %}
     <div class="d-flex flex-row-reverse bd-highlight">
         <a href="{% url 'journal:create_article' %}" class="btn btn-primary" type="submit">Создать</a>
     </div>
+    {% endif %}
     {% for object in object_list %}
 
     <div class="article">
