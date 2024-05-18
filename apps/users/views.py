@@ -85,7 +85,8 @@ class UserPasswordResetView(PasswordResetView):
                         from_email=DEFAULT_FROM_EMAIL,
                         recipient_list=[user.email]
                     )
-                except Exception:
+                except Exception as err:
+                    print(err)
                     print(f"Ошибка при отправке пароля юзеру: ({user=}), на email: {user_email}")
             return HttpResponseRedirect(reverse('users:login'))
         return super().form_valid(form)

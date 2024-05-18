@@ -52,51 +52,30 @@ source env\Scripts\activate.bat      # для Windows
 pip install -r requirements.txt
 ```
 
-3. Создайте базу данных postgresql.
+3. В корне проекта есть файл "config.ini.sample". Переименуйте его в "config.ini" и внесите в этот файл информацию
+   о созданной вами базе (название, пароль и т.д.), а также информацию о данных admin и данные почтового сервера.
 
-4. В корне проекта есть файл "config.ini.sample", внесите в этот файл информацию о созданной вами базе
-   (название, пароль и т.д.) и переименуйте в "config.ini". У вас должна получиться примерно следующая запись:
+4. Создайте базу данных postgresql.
 
-```ini
-; Configuration for database my_store
-[database_my_store]
-dbname = name_db
-host = localhost
-user = postgres
-password = password
-port = 5432
-```
-
-5. В корне проекта есть файл "env.sample", отредактируйте файл в соответствии с примером ниже
-
-```text
-EMAIL_HOST_USER='your_email@yandex.ru' - ваш email для отправки писем
-EMAIL_HOST_PASSWORD='your_yandex_smtp_password' - ваш пароль от smtp приложения почтового сервиса
-EMAIL_HOST_TO_USER='recipient@example.com' - email получателя для тестов
-
-ADMIN_EMAIL='admin@test.com' - email администратора сайта
-ADMIN_PASSWORD='123@secret' - пароль администратора сайта
-```
-
-6. Создаем таблицы в БД:
+5. Создаем таблицы в БД:
 
 ```text
 python manage.py migrate
 ```
 
-7. При необходимости заполните базу данных тестовыми данными следующей командой:
+6. При необходимости заполните базу данных тестовыми данными следующей командой:
 
 ```text
 python manage.py fill
 ```
 
-8. Запустите проект:
+7. Запустите проект:
 
 ```text
 python manage.py runserver
 ```
 
-9. Перейдите по адресу вашего локального компьютера в браузере:
+8.Перейдите по адресу вашего локального компьютера в браузере:
 
 ```text
 http://127.0.0.1:8000

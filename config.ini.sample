@@ -1,7 +1,29 @@
 ; Configuration for database my_store
-[database_my_store]
-dbname = db_name
-host = localhost
+[data_database]
+; Name database
+dbname = my_store
+; User database
 user = postgres
-password = password
+; Password database
+password = 12345
+; Host database
+host = localhost
+; Port database
 port = 5432
+
+
+; Configuration for email
+[data_email]
+; Email host user
+email_host_user = my_email@yandex.ru
+; Email host password
+email_host_password = password
+; Email host to user
+email_host_to_user = recipient@example.com
+
+
+[data_admin]
+; Email администратора сайта
+ADMIN_EMAIL = admin@test.com
+; Пароль администратора сайта
+ADMIN_PASSWORD = 123@secret
