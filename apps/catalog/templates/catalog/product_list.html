@@ -34,7 +34,6 @@
                 <!-- Ссылка-название товара -->
                 <a href="{% url 'catalog:product_detail' pk=product.pk %}" class="card__title">
                     {{ product.description|truncatewords:20 }}
-
                 </a>
             </div>
         </div>

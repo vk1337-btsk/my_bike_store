@@ -27,3 +27,11 @@ email_host_to_user = recipient@example.com
 ADMIN_EMAIL = admin@test.com
 ; Пароль администратора сайта
 ADMIN_PASSWORD = 123@secret
+
+
+[caches]
+LOCATION = redis://host:port
+
+[django]
+DEBUG = True_or_False
+SECRET_KEY = DJANGO_SECRET_KEY

@@ -1,0 +1,50 @@
+{% extends 'main/base.html' %}
+{% load my_tags %}
+
+{% block content %}
+
+<div class="container">
+    {% if user.is_autheniceated %}
+    <div>
+        <a href="{% url 'catalog:product_create' %}"
+           class="btn btn-sm btn-outline-secondary">Создать</a>
+    </div>
+    {% endif %}
+    <!-- Сетка карточек товаров -->
+    <div class="row justify-content-center text-center">
+        <div class="cards-product">
+            {% for product in page_obj %}
+            <!-- Карточка товара -->
+            <!-- Карточка товара -->
+            <div class="card-product text-center">
+                <!-- Верхняя часть -->
+                <div class="card__top">
+                    <!-- Изображение-ссылка товара -->
+                    <a class="card__image" href="{% url 'catalog:product_detail' pk=product.pk %}">
+                        <img class="card-img-top" src="{{ product.image|media_url }}" alt="{{ product.name }}">
+                    </a>
+                </div>
+                <!-- Нижняя часть -->
+                <div class="card__bottom">
+                    <div>{{product.name}}</div>
+                    <!-- Цены на товар (с учетом скидки и без)-->
+                    <div class="card__prices">
+                        <div class="card__price">{{ product.price }}</div>
+                        <!--      <div class="card__price card__price&#45;&#45;common">150 000</div>-->
+                    </div>
+                    <!-- Ссылка-название товара -->
+                    <a href="{% url 'catalog:product_detail' pk=product.pk %}" class="card__title">
+                        {{ product.description|truncatewords:20 }}
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<div class="container mt-3">
+    {% include 'catalog/subtemplate/pagination.html' %}
+</div>
+
+{% endblock content %}

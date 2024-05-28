@@ -1,10 +1,12 @@
 import secrets
+
 from django.contrib.auth.views import LoginView, LogoutView, PasswordResetView
 from django.core.mail import send_mail
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse, reverse_lazy
 from django.views.generic import CreateView, UpdateView
+
 from apps.users.forms import LoginForm, RecoveryForm, RegisterForm, UserForm
 from apps.users.models import User
 from apps.users.services import make_random_password

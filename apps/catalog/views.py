@@ -6,12 +6,16 @@ from django.forms import inlineformset_factory
 
 from apps.catalog.forms import VersionForm, ProductForm, ModeratorProductForm
 from apps.catalog.models import Product, Version, Category
+from apps.catalog.services import get_categories_from_cache, get_products_from_cache
 
 
 class ProductListView(ListView):
     model = Product
     paginate_by = 4
     extra_context = {'title': 'Товары'}
+
+    def get_queryset(self):
+        return get_products_from_cache()
 
 
 class ProductDetailView(LoginRequiredMixin, DetailView):
@@ -75,7 +79,7 @@ class ProductUpdateView(LoginRequiredMixin, UpdateView):
             raise PermissionDenied
 
         return super().dispatch(request, *args, **kwargs)
-    
+
 
 class ProductCreateView(LoginRequiredMixin, CreateView):
     login_url = reverse_lazy('users:login')
@@ -119,3 +123,22 @@ class ProductDeleteView(LoginRequiredMixin, DeleteView):
             raise PermissionDenied
 
         return super().dispatch(request, *args, **kwargs)
+
+
+class CategoryListView(ListView):
+    model = Category
+    template_name = 'catalog/category_list.html'
+
+    def get_queryset(self):
+        return get_categories_from_cache()
+
+
+class CategoryDetailView(LoginRequiredMixin, ListView):
+    model = Product
+    template_name = 'catalog/category_detail.html'
+    paginate_by = 4
+
+    def get_queryset(self, *args, **kwargs):
+        queryset = super().get_queryset(*args, **kwargs)
+        queryset = queryset.filter(category=self.kwargs.get('pk'))
+        return queryset
